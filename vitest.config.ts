@@ -21,7 +21,7 @@ export default defineConfig({
     pool: "forks",
     maxWorkers: isCI ? ciWorkers : localWorkers,
     include: ["src/**/*.test.ts", "extensions/**/*.test.ts", "test/format-error.test.ts"],
-    setupFiles: ["test/setup.ts"],
+    // setupFiles: ["test/setup.ts"],
     exclude: [
       "dist/**",
       "apps/macos/**",

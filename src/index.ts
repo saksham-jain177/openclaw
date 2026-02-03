@@ -1,17 +1,30 @@
 import './agents/stubs.js';
 import { globalEventBus } from './core/events.js';
 import { logger } from './logger.js';
+import { GmailAdapter } from './adapters/email/gmailAdapter.js';
+import { getGmailAuth } from './adapters/email/auth.js';
 
 /**
- * PHASE C — SYSTEM ENTRY POINT
- * Initializes the lawful orchestration skeleton.
+ * PHASE D — SYSTEM ENTRY POINT
+ * Initializes the lawful orchestration skeleton with Gmail ingress.
  */
 
 async function main() {
   logger.info("--- PERSONAL OPS AUTOMATION AGENT ---");
   logger.info("Status: BOUNDARY ENFORCEMENT ACTIVE");
-  logger.info("Mode: INERT SKELETON (PHASE C)");
+  logger.info("Mode: GMAIL INTAKE ENABLED (PHASE D)");
   logger.info("-------------------------------------");
+
+  const auth = getGmailAuth();
+  if (auth) {
+    const adapter = new GmailAdapter(auth);
+    // Manual poll trigger for Phase D demonstration
+    // In production, this would be called by a separate orchestration tick
+    logger.info("[SYSTEM] Gmail Adapter initialized. Ready for poll().");
+    
+    // Example: Manual poll on start for verification
+    // adapter.poll(); 
+  }
 
   // The system is now waiting for events published via the EventBus.
   // In Phase C, no external adapters exist. 
