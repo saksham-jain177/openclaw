@@ -1,7 +1,6 @@
-import { createSubsystemLogger } from "../logging/subsystem.js";
-import { parseBooleanValue } from "../utils/boolean.js";
+import { logger } from "../logger.js";
 
-const log = createSubsystemLogger("env");
+const log = logger;
 const loggedEnv = new Set<string>();
 
 type AcceptedEnvOption = {
@@ -44,7 +43,9 @@ export function normalizeZaiEnv(): void {
 }
 
 export function isTruthyEnvValue(value?: string): boolean {
-  return parseBooleanValue(value) === true;
+  if (!value) return false;
+  const v = value.toLowerCase().trim();
+  return v === "true" || v === "1" || v === "yes" || v === "on";
 }
 
 export function normalizeEnv(): void {
