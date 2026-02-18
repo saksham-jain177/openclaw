@@ -23,6 +23,8 @@ globalEventBus.subscribe(EventKind.Intake, async (event) => {
 });
 
 // -- CLASSIFICATION AGENT STUB --
+// Disabled in Phase E as the real ClassificationAgent is now active.
+/*
 globalEventBus.subscribe(EventKind.Classification, async (event) => {
   if (event.kind !== EventKind.Classification) {
     BoundaryGuard.failTrace(event.traceId, `ClassificationAgent received unauthorized event: ${event.kind}`);
@@ -30,6 +32,7 @@ globalEventBus.subscribe(EventKind.Classification, async (event) => {
   }
   logStub("ClassificationAgent", event);
 });
+*/
 
 // -- PLANNER AGENT STUB --
 globalEventBus.subscribe(EventKind.Plan, async (event) => {

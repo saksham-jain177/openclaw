@@ -3,17 +3,22 @@ import { globalEventBus } from './core/events.js';
 import { logger } from './logger.js';
 import { GmailAdapter } from './adapters/email/gmailAdapter.js';
 import { getGmailAuth } from './adapters/email/auth.js';
+import { classificationAgent } from './agents/classificationAgent.js';
 
 /**
- * PHASE D — SYSTEM ENTRY POINT
- * Initializes the lawful orchestration skeleton with Gmail ingress.
+ * PHASE E — SYSTEM ENTRY POINT
+ * Initializes the lawful orchestration skeleton with Gmail ingress and Classification logic.
  */
 
 async function main() {
   logger.info("--- PERSONAL OPS AUTOMATION AGENT ---");
   logger.info("Status: BOUNDARY ENFORCEMENT ACTIVE");
-  logger.info("Mode: GMAIL INTAKE ENABLED (PHASE D)");
+  logger.info("Mode: CLASSIFICATION ENABLED (PHASE E)");
   logger.info("-------------------------------------");
+
+  // Initialize Agents
+  // Note: classificationAgent is initialized on import in its module.
+  logger.info("[SYSTEM] Classification Agent active.");
 
   const auth = getGmailAuth();
   if (auth) {
